@@ -55,3 +55,4 @@ deployment:
         -H "X-Auth-Key: $CF_KEY"
         -H "Content-Type: application/json"
         --data '{"purge_everything":true}'
+
