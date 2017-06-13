@@ -35,10 +35,14 @@
 		<script type="text/javascript">
 			//-------------------------------------------------------------------------------------------
 			//     Application configuration (ignored on ArcGIS Online, Portal and during development)
-			//-------------------------------------------------------------------------------------------
-			var configOptions = {
+			//-------------------------------------------------------------------------------------------	
+            function getURLParameter(name) {
+              return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+            }
+          
+            var configOptions = {
 				// Enter an application ID created through the Map Journal builder
-				appid: "21e95140d8a04113a265999aedde6568",
+				appid: getURLParameter('appid'),
 				// Optionally to secure Journal's access, use an OAuth application ID (example: 6gyOg377fLUhUk6f)
 				// User will need to sign-in to access the viewer even if your application is public
 				oAuthAppId: "5ELG8LDjB7j7TPUr",
