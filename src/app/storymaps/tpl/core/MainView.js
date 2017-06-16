@@ -77,6 +77,7 @@ define([
 
                 // After a map is loaded (when the map starts to render)
                 topic.subscribe("story-loaded-map", function(){
+                  console.log('loaded');
                   require(['maptiks'], function (mapWrapper) {  
                     var container = app.map.container; // the current map div
                     var maptiksMapOptions = {
