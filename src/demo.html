@@ -78,7 +78,7 @@
                   Lmap.fitBounds(leafletExtent);
 
                   L.esri.basemapLayer("Gray").addTo(Lmap);
-                  console.log("demo updated");
+
                   win.app.map.maptiks.off("maptiks:track");
                   win.app.map.maptiks.on("maptiks:track", function (e) {
                     var position = e.hasOwnProperty("position") ? [e.position[1], e.position[0]] : [e.map_center[1], e.map_center[0]];
