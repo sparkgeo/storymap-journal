@@ -44,7 +44,7 @@ function getUrlVar(name)
 function defineDojoConfig()
 {
 	var path1 = location.pathname.replace(/\/[^/]+$/, '/');
-
+    console.log("main-config updated");
 	window.dojoConfig = {
 		parseOnLoad: true,
 		isDebug: false,
