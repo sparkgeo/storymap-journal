@@ -1,7 +1,7 @@
 {
   "name": "Storymaps-MapJournal",
   "scripts": {
-    "init": "npm install && npm install grunt-cli",
+    "init": "npm install && npm install -g grunt-cli",
     "clean": "rm -rf node_modules",
     "fresh_install": "npm run clean && npm run init",
     "build": "npm run grunt"
