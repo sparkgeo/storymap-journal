@@ -51,7 +51,8 @@ jobs:
   deploy-prod:
     <<: *defaults
     steps:
-      - checkout
+      - restore_cache:
+          key: v1-dist-{{ .Environment.CIRCLE_SHA1 }}
       - run:
           name: Envir Injection
           command: |
@@ -64,11 +65,11 @@ jobs:
           command: |
             curl -X DELETE "https://api.cloudflare.com/client/v4/zones/34e8519f80106c3699e76002b4153ce5/purge_cache" -H "X-Auth-Email: will@sparkgeo.com" -H "X-Auth-Key: $CF_KEY" -H "Content-Type: application/json" --data '{"purge_everything": true}'
 
-
   deploy-staging:
     <<: *defaults
     steps:
-      - checkout
+      - restore_cache:
+          key: v1-dist-{{ .Environment.CIRCLE_SHA1 }}
       - run:
           name: Envir Injection
           command: |
@@ -82,11 +83,11 @@ jobs:
           command: |
             curl -X DELETE "https://api.cloudflare.com/client/v4/zones/34e8519f80106c3699e76002b4153ce5/purge_cache" -H "X-Auth-Email: will@sparkgeo.com" -H "X-Auth-Key: $CF_KEY" -H "Content-Type: application/json" --data '{"purge_everything": true}'
 
-
   deploy-dev:
     <<: *defaults
     steps:
-      - checkout
+      - restore_cache:
+          key: v1-dist-{{ .Environment.CIRCLE_SHA1 }}
       - run:
           name: Envir Injection
           command: |
@@ -99,7 +100,6 @@ jobs:
           name: clear cloudflare cache
           command: |
             curl -X DELETE "https://api.cloudflare.com/client/v4/zones/34e8519f80106c3699e76002b4153ce5/purge_cache" -H "X-Auth-Email: will@sparkgeo.com" -H "X-Auth-Key: $CF_KEY" -H "Content-Type: application/json" --data '{"purge_everything": true}'
-
 
 workflows:
   version: 2
