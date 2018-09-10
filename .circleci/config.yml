@@ -103,9 +103,16 @@ jobs:
 
 workflows:
   version: 2
-  deploy:
+  build-deploy:
     jobs:
+      - build:
+          context: org-global
+          filters:
+            tags:
+              only: /.*/
       - deploy-prod:
+          requires:
+            - build
           context: org-global
           filters:
             branches:
@@ -113,11 +120,15 @@ workflows:
             tags:
               only: /v[0-9]+(\.[0-9]+)+/
       - deploy-staging:
+          requires:
+            - build
           context: org-global
           filters:
             branches:
               only: /rc[0-9]+(\.[0-9]+)+/
       - deploy-dev:
+          requires:
+            - build
           context: org-global
           filters:
             branches:
